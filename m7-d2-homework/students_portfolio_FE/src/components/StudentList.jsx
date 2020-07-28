@@ -16,7 +16,7 @@ class StudentList extends Component {
         )
     }
     componentDidMount = async ()=>{
-        const res = await fetch("http://localhost:3006/students")
+        const res = await fetch("http://localhost:3007/students")
        
         const students = await res.json()
         this.setState({

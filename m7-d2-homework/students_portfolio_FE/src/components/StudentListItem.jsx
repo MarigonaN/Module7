@@ -3,22 +3,23 @@ import { Col,  Button, Card } from "react-bootstrap"
 
 class StudentListItem extends Component {
     render() {
-        const { name, surname, email, Country } = this.props.item
+        const { image, name, surname, email, Country } = this.props.item
         return (
             <>
            
             <Col md={8}>
-                <Card style={{ width: '18rem', marginBottom: "10px" }}>
+                <Card style={{ width: '20rem', marginBottom: "10px" }}>
                    
                     <Card.Body>
-                        <Card.Title>{name} - {surname}</Card.Title>
+                   <img src={image} style={{width: "250px"}}/>
+                        <Card.Title>{name} {surname}</Card.Title>
                         <Card.Text>
-                            {email}
+                           Email: {email}
                     </Card.Text>
                     <Card.Text>
-                            {Country}
+                          Country:  {Country}
                     </Card.Text>
-                        <Button variant="danger">Delete</Button>
+                      
                     </Card.Body>
                 </Card>
 
