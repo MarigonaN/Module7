@@ -1,33 +1,21 @@
+import React from 'react';
 
-    import React, { Component } from 'react'
-    import StudentList from './components/StudentList';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import List from './components/List'
+import {BrowserRouter as Router,Route} from 'react-router-dom'
+import Details from './components/Details';
+
+function App() {
+  return (
+    <div className="App">
+      <Router>
+        <Route path="/" exact component={List}/>
+        <Route path="/details/:id" exact component={Details}/>
+      </Router>
     
-    
-    export default class App extends Component {
-      state = {
-        students: []
-      }
-      render() {
-        return (
-          <header className="app-background">
-          <div>
-            <h1 className="display-3 text-center header">Students</h1>
-            <StudentList students={this.state.students} />
-          </div>
-          </header>
-        )
-      }
-      
-      componentDidMount = async ()=>{
-        const res = await fetch("http://localhost:3007/students")
-     
-        const students = await res.json()
-        this.setState({
-          students: students
-        })
-      }
-    }
-    
-    
-    
-    
+    </div>
+  );
+}
+
+export default App;
