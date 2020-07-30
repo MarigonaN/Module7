@@ -3,40 +3,28 @@ import { books } from "../data/books";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => state;
+
+const mapDispatchToProps = (dispatch) => ({
+  removeFromCart: (id) =>
+    dispatch({
+      type: "REMOVE_ITEM_FROM_CART",
+      payload: id,
+    }),
+});
 
 class Cart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cart: [],
-    };
-  }
-
-  componentDidMount() {
-    this.setState({
-      cart:
-        this.props.cart &&
-        this.props.cart.map((bookId) =>
-          books.find((book) => book.id === bookId)
-        ),
-    });
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.cart !== this.props.cart) {
-      this.setState({
-        cart: this.props.cart.map((bookId) =>
-          books.find((book) => book.id === bookId)
-        ),
-      });
-    }
-  }
-
   render() {
+    const cart = this.props.cart.products.map((bookId) =>
+      books.find((book) => book.id === bookId)
+    );
+
     return (
       <div className="row">
         <ul className="col-sm-12" style={{ listStyle: "none" }}>
-          {this.state.cart.map((book, i) => (
+          {cart.map((book, i) => (
             <li key={i} className="my-4">
               <Button
                 variant="danger"
@@ -56,7 +44,7 @@ class Cart extends Component {
         <div className="row">
           <div className="col-sm-12 font-weight-bold">
             TOTAL:{" "}
-            {this.state.cart.reduce(
+            {cart.reduce(
               (acc, currentValue) => acc + parseFloat(currentValue.price),
               0
             )}
@@ -67,4 +55,4 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

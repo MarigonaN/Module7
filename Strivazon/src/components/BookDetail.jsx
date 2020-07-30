@@ -1,5 +1,39 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => state;
+
+const mapDispatchToProps = (dispatch) => ({
+  addToCart: (id) => {
+    dispatch({
+      type: "ADD_ITEM_TO_CART",
+      payload: id,
+    });
+  },
+  // addToCart: (id) => {
+  //   return dispatch((dispatch, getState) => {
+  //     // async code
+  //     console.log("A thunk was used tos dispatch this action", getState());
+  //     dispatch({
+  //       type: "ADD_ITEM_TO_CART",
+  //       payload: id,
+  //     });
+  //   });
+  // },
+  addToCartThunk: (id) => dispatch(addItemWithThunk(id)),
+});
+
+const addItemWithThunk = (id) => {
+  return (dispatch, getState) => {
+    //async code
+    console.log("A thunk was used to dispatch this action", getState());
+    dispatch({
+      type: "ADD_ITEM_TO_CART",
+      payload: id,
+    });
+  };
+};
 
 class BookDetail extends Component {
   constructor(props) {
@@ -44,12 +78,16 @@ class BookDetail extends Component {
               <span className="font-weight-bold">Price:</span>{" "}
               {this.state.book.price}
             </p>
-            <Button
-              color="primary"
-              onClick={() => this.props.addToCart(this.state.book.id)}
-            >
-              BUY
-            </Button>
+            {this.props.user.username ? (
+              <Button
+                color="primary"
+                onClick={() => this.props.addToCartThunk(this.state.book.id)}
+              >
+                BUY
+              </Button>
+            ) : (
+              <p>Users must log in to purchase</p>
+            )}
           </div>
         </div>
       </div>
@@ -65,4 +103,4 @@ class BookDetail extends Component {
   }
 }
 
-export default BookDetail;
+export default connect(mapStateToProps, mapDispatchToProps)(BookDetail);
