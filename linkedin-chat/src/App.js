@@ -84,7 +84,7 @@ function App() {
         
        
             <li key={i} style={{display: 'flex', justifyContent:'flex-start', alignItems: 'center', marginTop:'15px'}}>
-               <small style={{ backgroundColor : '#F5F5F5', padding: '10px 20px', width: '30%', borderRadius: '20px', color: '#000'}}>  {msg.message} </small>
+               <small style={{ backgroundColor : 'blue', padding: '10px 20px', width: '30%', borderRadius: '10px', color: '#000'}}>  {msg.message} </small>
                <strong className='text-muted ml-3'>{msg.user}</strong> 
             </li>
 
