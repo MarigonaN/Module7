@@ -111,7 +111,7 @@ function App() {
             autoComplete="off"
             value={message}
             onChange={handleMessage}
-            style={{ flex: "1 0 auto", outline: 0, paddingLeft: '8px'}}
+            style={{ flex: "1 0 auto", outline: 0, paddingLeft: '8px', backgroundColor: 'black'}}
             className="rounded-0 border-0"
           />
           <Button type="send" className="rounded-0 btn-send">
