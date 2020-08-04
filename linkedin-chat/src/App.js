@@ -140,8 +140,7 @@ function App() {
       
     </div>
 
-        <div className='col col-2' style={{padding: '5px', height:'90vh', margin: '3px', border: '1px solid #CECFD2'}}>
-       </div>
+      
 
        
 
