@@ -76,7 +76,7 @@ function App() {
       <div className='col col-3' style={{height:'90vh', padding: '5px', margin: '3px', border: '1px solid #CECFD2'}}>
       </div>
   
-      <div className='col col-6' style={{ position: 'relative', height:'90vh', margin: '3px', border: '1px solid #CECFD2'}}>
+      <div className='col col-8' style={{ position: 'relative', height:'90vh', margin: '3px', border: '1px solid #CECFD2'}}>
      
    
         <ul id="messages" style={{  height:'93%', listStyle: "none", padding: "40px"}}>
