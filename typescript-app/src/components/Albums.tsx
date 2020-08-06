@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+
+
 import { HeaderProps } from '../types/types'
 
 interface AlbumState {
@@ -33,17 +34,17 @@ class  Albums extends  React.Component<AlbumState> {
         console.log(this.state.searchedMusic)
         return (
             <>
-               <Container>
+          
                <div className='row'>
 
        { this.state.searchedMusic.map(item => {
          return (
-            <Col lg='3' style={{marginBottom : '30px', display: 'flex',  flexDirection: 'column', alignItems: 'center', color: '#fff'}}>
+            <col  style={{marginBottom : '30px', display: 'flex',  flexDirection: 'column', alignItems: 'center', color: '#fff'}}>
                  <img alt='img' width='200px' src={item.album.cover_big} style={{borderRadius: '10px'}} className='cover'/>
                  <small className='mt-3'>{item.album.title}</small>
 
 
-            </Col>
+            </col>
 
 )
            
@@ -51,7 +52,7 @@ class  Albums extends  React.Component<AlbumState> {
                 
               
                </div>
-             </Container>
+          
             
                </>
            )
